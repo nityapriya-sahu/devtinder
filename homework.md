@@ -1,0 +1,13 @@
+<!--
+- Create a Repository
+- Initialize the repository                                         = npm init
+- node-modules, package.json, package-lock.json
+- Install Express                                                   = npm i express
+- create a server                                                   = in app.js file
+- Listen to port 7000                                               = -do-
+- Write request handlers for /dashboard, /test                      = -do-
+- Install nodemon and update scripts inside package.json            = "start": "node src/app.js", "dev": "nodemon src/app.js"
+- What are dependencies
+- What is the use of "-g" while npm install                         = npm i -g nodemon
+- Difference between caret and tilde (^ vs ~)
+-->
