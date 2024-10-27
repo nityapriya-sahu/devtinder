@@ -12,7 +12,7 @@ const app = express();
 //   });
 // });
 
-//Here a & c always should be in last , then we write between them it will work(e.g-> abbbbbbbbbbbbbbbbbbc)
+//Here a & c always should be in first and last , then we write between them it will work(e.g-> abbbbbbbbbbbbbbbbbbc)
 app.get("/ab+c", (req, res) => {
   res.send({
     fname: "Chintesh",
@@ -20,7 +20,7 @@ app.get("/ab+c", (req, res) => {
   });
 });
 
-//Here ab & cd always should be in last , then whatever we write between them it will work(e.g-> abCHINTUcd)
+//Here ab & cd always should be in first and last , then whatever we write between them it will work(e.g-> abCHINTUcd)
 app.get("/ab*cd", (req, res) => {
   res.send({
     fname: "Chintesh",
@@ -54,7 +54,6 @@ app.get(/.*fly$/, (req, res) => {
 });
 
 //To read the id or query from url
-//We can group it also, here bc is optional(e.g-> /abcd will work, but /acd will not work)
 app.get("/user", (req, res) => {
   //We can get it through req
   console.log(req.query); //call an api (e.g-> http://localhost:7777/user?userid=101) output will show on terminal ({ userid: '101' })
