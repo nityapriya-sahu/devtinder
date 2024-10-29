@@ -62,17 +62,32 @@ const app = express();
 
 //What happen if we write next() first then send response
 
-app.get(
-  "/user",
-  (req, res, next) => {
-    console.log("Handling the route user!");
-    next();
-    res.send("Response!!!");
-  },
-  (req, res) => {
-    console.log("Handling the route user 1!");
-    res.send("Response 1!!!");
-  }
-  //It gives the output 'Response 1!!!' and also show warning error "Cannot set headers after they are sent to the client"
-);
+// app.get(
+//   "/user",
+//   (req, res, next) => {
+//     console.log("Handling the route user!");
+//     next();
+//     res.send("Response!!!");
+//   },
+//   (req, res) => {
+//     console.log("Handling the route user 1!");
+//     res.send("Response 1!!!");
+//   }
+//   //It gives the output 'Response 1!!!' and also show warning error "Cannot set headers after they are sent to the client"
+// );
+
+//-------------- OR OR OR OR OR OR OR OR OR ------------------------
+
+//We can do it like this also.
+
+app.get("/user", (req, res, next) => {
+  //   res.send("response route handler 1");
+  console.log("response route handler 1");
+  next();
+});
+app.get("/user", (req, res) => {
+  console.log("response route handler 2");
+  res.send("response route handler 2");
+});
+
 app.listen("9090", () => console.log("Listen on port 9090..."));
