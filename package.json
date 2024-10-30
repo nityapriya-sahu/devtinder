@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/routeHandlers.js"
+    "dev": "nodemon src/DummyMiddlewares/app2.js"
   },
   "author": "Nitya Priya Sahu",
   "license": "ISC",
