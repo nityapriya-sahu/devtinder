@@ -94,6 +94,19 @@ app.delete("/user", async (req, res) => {
   }
 });
 
+//Update data of the user
+app.patch("/user", async (req, res) => {
+  const userId = req.body.userId;
+  const data = req.body; //Here the data is whole object (particular that document)
+  console.log(data);
+  try {
+    await User.findByIdAndUpdate({ _id: userId }, data);
+    res.send("User updated successfully!");
+  } catch (error) {
+    res.status(400).send("Something went Wrong!");
+  }
+});
+
 connectDB()
   .then(() => {
     console.log("Connect to Database successfully.");
