@@ -3,21 +3,37 @@ const connectDB = require("./config/database"); //Import this file which is data
 const app = express();
 const User = require("./models/user"); //import the user schema
 
-app.post("/signup", async (req, res) => {
-  // Creating a new instance of the user model
-  const user = new User({
-    firstName: "Chintu",
-    lastName: "Sahu",
-    emailId: "chintu@gmail.com",
-    password: "chintu@123",
-    age: 26,
-  });
+app.use(express.json()); //==> this line is very important, it's a Middleware provide by Express, which read the json data when call an API, and send it to req.body
 
+app.post("/signup", async (req, res) => {
+  console.log(req.body);
+
+  // Creating a new instance of the user model
+  //   const user = new User({
+  //     firstName: "Chintu",
+  //     lastName: "Sahu",
+  //     emailId: "chintu@gmail.com",
+  //     password: "chintu@123",
+  //     age: 26,
+  //   });
+  //   try {
+  //     await user.save();
+  //     res.send("User added successfully!");
+  //   } catch (error) {
+  //     res.status(400).send("getting error = " + error.message);
+  //   }
+
+  //=============================================
+  //Lets create dynamic API to receivce data from end user
+
+  const user = new User(req.body); //that simple
+
+  //then handle error
   try {
     await user.save();
     res.send("User added successfully!");
-  } catch (error) {
-    res.status(400).send("getting error = " + error.message);
+  } catch (err) {
+    res.status(400).send("getting error = " + err.message);
   }
 });
 
