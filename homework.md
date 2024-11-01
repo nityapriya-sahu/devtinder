@@ -1,3 +1,4 @@
+<!-- EP - 03 -->
 <!--
 - Create a Repository
 - Initialize the repository                                         = npm init
@@ -12,6 +13,7 @@
 - Difference between caret and tilde (^ vs ~)
 -->
 
+<!-- EP - 04 -->
 <!--
 - initialize git
 - .gitignore
@@ -30,6 +32,7 @@
 - Reading the dynamic routes
 -->
 
+<!-- EP - 05 -->
 <!--
 - Multiple Route Handlers - Play with the code
 - next()
@@ -44,3 +47,19 @@
 - Write a dummy auth middleware for all user routes, except /user/login
 - Error Handling using app.use("/", (err, req, res, next) = {});
 -->
+
+<!-- EP - 06 -->
+<!--
+- Create a free cluster on MongoDB official website (Mongo Atlas)
+- Install mongoose library
+- Connect your application to the Database "Connection-url"/devTinder
+- Call the connectDB function and connect to database before starting application on 6666
+
+
+- Create a userSchema & user Model
+
+
+- Create POST /signup API to add data to database
+- Push some documents using API calls from postman
+- Error Handling using try , catch
+ -->
