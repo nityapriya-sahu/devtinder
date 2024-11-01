@@ -5,6 +5,7 @@ const User = require("./models/user"); //import the user schema
 
 app.use(express.json()); //==> this line is very important, it's a Middleware provide by Express, which read the json data when call an API, and send it to req.body
 
+//POST API for signup
 app.post("/signup", async (req, res) => {
   console.log(req.body);
 
@@ -34,6 +35,47 @@ app.post("/signup", async (req, res) => {
     res.send("User added successfully!");
   } catch (err) {
     res.status(400).send("getting error = " + err.message);
+  }
+});
+
+//Get user by email
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.emailId;
+
+  //Using Find()
+  //   try {
+  //     const users = await User.find({ emailId: userEmail });
+
+  //     if (users.length === 0) {
+  //       res.status(404).send("Users not Found!");
+  //     } else {
+  //       res.send(users);
+  //     }
+  //   } catch (err) {
+  //     res.status(400).send("Something went wrong!");
+  //   }
+  //--------------------------------------------
+
+  //Using FindOne()
+  try {
+    const user = await User.findOne({ emailId: req.body.emailId });
+    if (!user) {
+      res.status(404).send("User Not found!");
+    } else {
+      res.send(user);
+    }
+  } catch (err) {
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+//Feed API - GET /feed - get all the users from the database
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({}); //If empty filter then it gets all the documents from the collection & send to you.
+    res.send(users);
+  } catch (error) {
+    res.status(400).send("Something wemt Wrong!");
   }
 });
 
