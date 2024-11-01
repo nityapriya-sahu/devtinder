@@ -79,6 +79,21 @@ app.get("/feed", async (req, res) => {
   }
 });
 
+//Delete API
+//So we need by default id, name or something to delete a document
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+  try {
+    // const user = await User.findByIdAndDelete({_id: userId})
+    // or---
+    const user = await User.findByIdAndDelete(userId);
+
+    res.send("User Deleted!");
+  } catch (error) {
+    res.status(400).send("Something went Wrong!");
+  }
+});
+
 connectDB()
   .then(() => {
     console.log("Connect to Database successfully.");
