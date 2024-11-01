@@ -73,4 +73,6 @@
 - API- Get user by email
 - API - Feed API - GET /feed - get all the users from the database
 - API - Get user by ID
+
+- Create a delete user API
 -->
